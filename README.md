@@ -1,7 +1,7 @@
 ### 1. 프로젝트명
 
-**ThinkGym – 생각하는 힘을 기르는 플랫폼**
-![팀소개 및 프로젝트 설명 노션페이지](https://www.notion.so/Ralphton-Team-One-30b46e00f526807990becbd80facfc39?t=30d46e00f5268057ad7300a9667bdb8f)
+**ThinkGym – 생각하는 힘을 기르는 플랫폼**  
+[팀소개 및 프로젝트 설명 노션페이지](https://www.notion.so/Ralphton-Team-One-30b46e00f526807990becbd80facfc39?t=30d46e00f5268057ad7300a9667bdb8f)
 
 ---
 
