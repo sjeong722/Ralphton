@@ -2,6 +2,8 @@
 
 **ThinkGym – 생각하는 힘을 기르는 플랫폼**  
 
+<img width="1019" height="568" alt="thinkgym_pitch_thumbnail" src="https://github.com/user-attachments/assets/a20cb78f-ece6-47a4-ba9f-739c5347a730" />
+
 ---
 
 ### 2. 개요
