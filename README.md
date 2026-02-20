@@ -1,8 +1,6 @@
 ### 1. 프로젝트명
 
 **ThinkGym – 생각하는 힘을 기르는 플랫폼**  
-  
-[팀소개 및 프로젝트 설명 노션페이지](https://www.notion.so/Ralphton-Team-One-30b46e00f526807990becbd80facfc39?t=30d46e00f5268057ad7300a9667bdb8f)
 
 ---
 
@@ -39,3 +37,7 @@ ThinkGym은 멀티 에이전트 기반 AI 토론 구조를 활용해 다양한 �
 - **B2B:** 학원·기업 사고 훈련 솔루션
 - **B2C:** 독서·이슈 기반 프리미엄 구독 서비스
 - 사고 데이터 축적을 통한 커리큘럼 고도화 및 글로벌 확장 가능
+
+
+  
+[팀소개 및 프로젝트 설명 노션페이지](https://www.notion.so/Ralphton-Team-One-30b46e00f526807990becbd80facfc39?t=30d46e00f5268057ad7300a9667bdb8f)
