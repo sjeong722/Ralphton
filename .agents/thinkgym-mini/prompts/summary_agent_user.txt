@@ -1,0 +1,5 @@
+Generate the session report.
+
+Debate Transcript: {{debate_transcript}}
+User Note: {{user_note}}
+Structure Feedback: {{structure_feedback}}
