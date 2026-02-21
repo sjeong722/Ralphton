@@ -10,6 +10,7 @@
 ## 구성
 - `hooks.example.yaml`: 이벤트-스크립트 매핑 초안
 - `scripts/`: 실제 점검 로직
+- `.claude/settings.json`: 실제 hook 런타임 연결
 
 ## 운영 규칙
 - 파괴적 동작은 금지하고 경고/차단만 수행

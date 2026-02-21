@@ -10,6 +10,7 @@
 ## 구성
 - `commands.example.yaml`: 명령-스크립트 매핑 초안
 - `scripts/`: 명령 실행 스크립트
+- `.claude/commands/*.md`: 실제 slash command 진입점
 
 ## 운영 규칙
 - 각 명령은 담당 스킬을 1개 이상 명시

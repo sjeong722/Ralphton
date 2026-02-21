@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./.agents/hooks/scripts/pre_task_scope_check.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./.agents/hooks/scripts/pre_delivery_skill_check.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
