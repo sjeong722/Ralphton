@@ -9,6 +9,19 @@ from typing import Dict, List
 
 PROMPT_DIR = Path(__file__).parent / "prompts"
 SHORT_NOTE_THRESHOLD = 20
+STOPWORDS = {
+    "저는",
+    "나는",
+    "제가",
+    "우리",
+    "그리고",
+    "하지만",
+    "그러나",
+    "다만",
+    "이것",
+    "그것",
+    "주장",
+}
 
 
 @dataclass
@@ -61,16 +74,28 @@ def extract_keywords(text: str) -> List[str]:
     return keywords
 
 
+def extract_salient_keywords(text: str) -> List[str]:
+    return [w for w in extract_keywords(text) if w.lower() not in STOPWORDS]
+
+
 def validate_con_first_sentence(con_text: str, pro_text: str) -> None:
     sentences = split_sentences(con_text)
     if not sentences:
         raise ValueError("Con 출력이 비어 있습니다.")
     first = sentences[0]
-    pro_keywords = extract_keywords(pro_text)
+    pro_keywords = extract_salient_keywords(pro_text)
     if not pro_keywords:
         return
     if not any(keyword in first for keyword in pro_keywords[:5]):
         raise ValueError("Con 첫 문장이 Pro 발언 키워드를 직접 참조하지 않았습니다.")
+
+
+def validate_con_topic_relevance(con_text: str, topic: str) -> None:
+    topic_keywords = extract_salient_keywords(topic)
+    if not topic_keywords:
+        return
+    if not any(keyword in con_text for keyword in topic_keywords[:5]):
+        raise ValueError("Con 출력이 주제 키워드를 충분히 반영하지 않았습니다.")
 
 
 def validate_structure_json(data: Dict[str, object], user_note: str) -> None:
@@ -188,11 +213,12 @@ def mock_pro(topic: str, user_note: str) -> str:
 
 
 def mock_con(topic: str, pro_statement: str) -> str:
-    keyword = extract_keywords(pro_statement)[0] if extract_keywords(pro_statement) else "주장"
+    pro_keywords = extract_salient_keywords(pro_statement)
+    keyword = pro_keywords[0] if pro_keywords else "핵심 근거"
     return (
-        f"'{keyword}'이라는 표현은 방향성은 있으나 실제 현장에서 필요한 세부 검증 절차를 충분히 담지 못합니다. "
-        "찬성 논리는 효과가 전제된 상태를 가정해 실패 가능성과 이해관계 충돌을 과소평가하는 약점이 있습니다. "
-        f"만약 목표를 유지하되 단계별 실험과 중간 점검 지표를 먼저 합의한다면 '{topic}'에 조건부로 동의할 수 있습니다."
+        f"저는 '{topic}'에 반대하며, 찬성 측의 '{keyword}'만으로는 정책 전환의 타당성을 충분히 입증하기 어렵다고 봅니다. "
+        "첫째 초기 비용과 운영 복잡도가 커지고 둘째 실행 실패 시 책임과 복구 기준이 불명확해 실제 성과가 악화될 수 있습니다. "
+        f"다만 전면 도입 대신 제한된 파일럿과 명확한 중단 기준을 먼저 합의한다면 '{topic}'에 대해 조건부 논의는 가능합니다."
     )
 
 
@@ -313,6 +339,7 @@ def generate_with_retry(kind: str, variables: Dict[str, str], mock_mode: bool, m
             if kind == "con":
                 ensure_three_sentences(text, "Con")
                 validate_con_first_sentence(text, variables["pro_statement"])
+                validate_con_topic_relevance(text, variables["topic"])
                 return text
             if kind == "structure":
                 parsed = parse_structure_json(text, variables["user_note"])
