@@ -1,0 +1,13 @@
+version: 1
+hooks:
+  - id: pre-task-scope-check
+    event: before_task
+    run: ".agents/hooks/scripts/pre_task_scope_check.sh"
+    mode: block
+    description: "작업 경로가 허용 범위(.claude/.agents)인지 점검"
+
+  - id: pre-delivery-skill-check
+    event: before_response
+    run: ".agents/hooks/scripts/pre_delivery_skill_check.sh"
+    mode: warn
+    description: "SKILL.md 필수 섹션 누락 여부 점검"

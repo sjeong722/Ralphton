@@ -1,0 +1,27 @@
+version: 1
+commands:
+  - id: report-draft
+    skill: "보고서-작성"
+    run: ".agents/commands/scripts/report_draft.sh"
+    required_inputs:
+      - topic
+      - audience
+      - evidence
+    output_contract:
+      - summary
+      - changed_files
+      - validation
+      - cautions
+
+  - id: refactor-checklist
+    skill: "코드-리팩토링"
+    run: ".agents/commands/scripts/refactor_checklist.sh"
+    required_inputs:
+      - target_files
+      - known_issues
+      - allowed_scope
+    output_contract:
+      - summary
+      - changed_files
+      - validation
+      - cautions
