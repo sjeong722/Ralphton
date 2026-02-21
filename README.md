@@ -42,4 +42,4 @@ ThinkGym은 멀티 에이전트 기반 AI 토론 구조를 활용해 다양한 �
 
 
   
-[팀소개 및 프로젝트 설명 노션페이지](https://www.notion.so/Ralphton-Team-One-30b46e00f526807990becbd80facfc39?t=30d46e00f5268057ad7300a9667bdb8f)
+[팀 소개 및 프로젝트 설명 노션페이지](https://www.notion.so/Ralphton-Team-One-30b46e00f526807990becbd80facfc39?t=30d46e00f5268057ad7300a9667bdb8f)
